@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 app = Flask(__name__)
 
+vocabulary = [[('mammary tumors','tumeurs mmammaires'), ('estrogen receptors','Récepteur des œstrogènes'), ('breast cancers','cancers du sein')], [],[],[],[],[],[],[]]
 
 text_tgt = [ "Il existe un besoin désespéré sur le terrain de tumeurs mammaires et de lignées cellulaires de souris qui imitent fidèlement l'expression et l'activité des récepteurs aux œstrogènes (ER) que l'on trouve dans les cancers du sein humain.",
 
@@ -52,7 +53,7 @@ def show_parallel():
 def edit_parallel():
     #print('a')
     #print(text_tgt)
-    return render_template('translation_editor.html', parallel_texts=zip(text_tgt, text_src))
+    return render_template('translation_editor.html', parallel_texts=zip(text_tgt, text_src, vocabulary))
 
 @app.route('/save_edit', methods = ['POST'])
 def save_edit():

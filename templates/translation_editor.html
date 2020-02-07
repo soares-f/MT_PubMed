@@ -68,7 +68,7 @@
       </thead>
 
       <tbody>
-          {% for sentence_tgt, sentence_src in parallel_texts %}
+          {% for sentence_tgt, sentence_src,vocabulary in parallel_texts %}
         <div class="form-group">
               <tr>
           <td>{{ sentence_src }}</td>
@@ -76,6 +76,16 @@
 
         </tr>
         </div>
+              {% if vocabulary|length > 0 %}
+
+                  {% for pair in vocabulary %}
+                    <tr class="table-info">
+                        <td  align='right'>  <span class="font-italic"> {{ pair[0] }} </span></td>
+                        <td> <span class="font-italic"> {{ pair[1] }} </span></td>
+                      </tr>
+                  {% endfor %}
+
+              {% endif %}
           {% endfor %}
 
       </tbody>
